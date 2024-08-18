@@ -1,3 +1,7 @@
+/**
+ * Class representing a PosnegColorGenerator.
+ * This class generates positive and negative colors based on a given base color, increment step, and color count.
+ */
 export class PosnegColorGenerator {
     private readonly _positiveColors: Array<string>;
     private readonly _negativeColors: Array<string>;
