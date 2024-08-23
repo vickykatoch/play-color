@@ -1,0 +1,7 @@
+.splitter {
+    opacity: 0.1;
+    background-color: #6f6b6b;
+}
+.splitter:hover {
+    opacity: 1;
+}

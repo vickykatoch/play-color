@@ -28,7 +28,7 @@ export const ResizablePanels: FC<ResizablePanelProps> = ({
     const { sizeAdjustedItems, sizeManager } = useSizeObserver(items, isVertical, ref.current);
 
     const onDragFinished = useCallback(
-        (id: string, start: DragEvent, end: DragEvent) => {
+        (id: string, end: DragEvent) => {
             sizeManager?.updateSize(id, isVertical ? end.offsetY : end.offsetX);
         },
         [isVertical, sizeManager],
@@ -46,13 +46,14 @@ export const ResizablePanels: FC<ResizablePanelProps> = ({
                         <PanelItem header={itemHeader(item)} item={item} vertical={isVertical}>
                             {itemBody(item)}
                         </PanelItem>
-                        <SplitterBar
-                            id={item.id}
-                            size={splitterSize}
-                            isVertical={isVertical}
-                            hide={index === items.length - 1}
-                            onDragFinished={onDragFinished}
-                        />
+                        {index < sizeAdjustedItems.length - 1 && (
+                            <SplitterBar
+                                id={item.id}
+                                size={splitterSize}
+                                isVertical={isVertical}
+                                onDragFinished={onDragFinished}
+                            />
+                        )}
                     </Fragment>
                 );
             })}

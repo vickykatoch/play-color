@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { ResizablePanelItem } from './types';
 
 interface PanelItemProps {
@@ -10,7 +10,12 @@ interface PanelItemProps {
 
 export const PanelItem: FC<PanelItemProps> = ({ header, children, item, vertical }) => {
     const [style, setStyle] = useState<React.CSSProperties>({});
-
+    const ref = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        ref.current?.addEventListener('dragover', e => {
+            e.preventDefault();
+        });
+    }, []);
     useEffect(() => {
         if (vertical) {
             setStyle({ height: `${item.verticalSize}%` });
@@ -20,7 +25,7 @@ export const PanelItem: FC<PanelItemProps> = ({ header, children, item, vertical
     }, [vertical, item.verticalSize, item.horizontalSize]);
 
     return (
-        <div className='d-flex flex-column' style={style}>
+        <div className='d-flex flex-column' style={style} ref={ref}>
             <div className='d-flex flex-row'>{header}</div>
             <div className='d-flex flex-grow-1'>{children}</div>
         </div>
