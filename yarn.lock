@@ -7190,7 +7190,8 @@ pkg-up@^3.1.0:
     "@types/react" "^18.0.0"
     "@types/react-dom" "^18.0.0"
     bootstrap "5.3.3"
-    play-color "file:C:/Users/vicky/AppData/Local/Yarn/Cache/v6/npm-play-color-0.1.0-7c927ec1-5e7c-4f08-ae2d-b5498d34e25a-1724286555746/node_modules/play-color"
+    classnames "^2.5.1"
+    play-color "file:C:/Users/vicky/AppData/Local/Yarn/Cache/v6/npm-play-color-0.1.0-c068795e-b0de-409e-9118-b4dc8d80c34c-1724372678893/node_modules/play-color"
     react "^18.3.1"
     react-dom "^18.3.1"
     react-router "^6.26.1"
@@ -8298,6 +8299,13 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
+rxjs@^7.8.1:
+  version "7.8.1"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.1.tgz#6f6f3d99ea8044291efd92e7c7fcf562c4057543"
+  integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
+  dependencies:
+    tslib "^2.1.0"
+
 safe-array-concat@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/safe-array-concat/-/safe-array-concat-1.1.2.tgz"
@@ -9170,7 +9178,7 @@ tslib@^1.8.1:
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.3:
+tslib@^2.0.3, tslib@^2.1.0:
   version "2.6.3"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.3.tgz"
   integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==
