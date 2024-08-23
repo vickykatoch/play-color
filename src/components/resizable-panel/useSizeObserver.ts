@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ResizablePanelItem } from './types';
 import { PanelSizeManager } from './SizeManager';
 
@@ -12,10 +12,7 @@ export function useSizeObserver(items: ResizablePanelItem[], isVertical: boolean
 
     useEffect(() => {
         const sizeManager = new PanelSizeManager(items, isVertical);
-        // const sub = sizeManager.sizeChanged$.subscribe(items => setState({ sizeAdjustedItems: items, sizeManager }));
-        const sub = sizeManager.sizeChanged$.subscribe(changedItems => {
-            setState({ sizeAdjustedItems: changedItems, sizeManager });
-        });
+        const sub = sizeManager.sizeChanged$.subscribe(items => setState({ sizeAdjustedItems: items, sizeManager }));
         sizeManager.resolveSize();
 
         return () => {

@@ -1,5 +1,9 @@
+//#region imports
 import { FC, useEffect, useMemo, useRef } from 'react';
 import './SplitterBar.css';
+//#endregion
+
+//#region local types
 interface SplitterBarProps {
     id: string;
     size: number;
@@ -7,8 +11,10 @@ interface SplitterBarProps {
     lock?: boolean;
     onDragFinished?: (id: string, end: DragEvent) => void;
 }
+//#endregion
 
 export const SplitterBar: FC<SplitterBarProps> = ({ id, size, isVertical, lock, onDragFinished }) => {
+    //#region state
     const ref = useRef<HTMLDivElement>(null);
     const style = useMemo(
         () => ({
@@ -18,16 +24,22 @@ export const SplitterBar: FC<SplitterBarProps> = ({ id, size, isVertical, lock, 
         }),
         [isVertical, size, lock],
     );
+    //#endregion
+
+    //#region side effects
     useEffect(() => {
-        const refInstance = ref.current;
+        const elem = ref.current;
         const onDragEnd = (e: DragEvent) => onDragFinished?.(id, e);
 
-        refInstance?.addEventListener('dragend', onDragEnd);
+        elem?.addEventListener('dragend', onDragEnd);
 
         return () => {
-            refInstance?.removeEventListener('dragend', onDragEnd);
+            elem?.removeEventListener('dragend', onDragEnd);
         };
     }, [id, onDragFinished]);
+    //#endregion
 
+    //#region render
     return <div className='splitter' style={style} ref={ref} draggable={!lock}></div>;
+    //#endregion
 };

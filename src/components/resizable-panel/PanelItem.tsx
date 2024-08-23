@@ -11,11 +11,17 @@ interface PanelItemProps {
 export const PanelItem: FC<PanelItemProps> = ({ header, children, item, vertical }) => {
     const [style, setStyle] = useState<React.CSSProperties>({});
     const ref = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        ref.current?.addEventListener('dragover', e => {
-            e.preventDefault();
-        });
+        const elem = ref.current;
+        const onDragOver = (e: DragEvent) => e.preventDefault();
+        elem?.addEventListener('dragover', onDragOver);
+
+        return () => {
+            elem?.removeEventListener('dragover', onDragOver);
+        };
     }, []);
+
     useEffect(() => {
         if (vertical) {
             setStyle({ height: `${item.verticalSize}%` });
